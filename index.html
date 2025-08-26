@@ -1,0 +1,726 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <link rel="icon" type="image/png" href="logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinjaman Koperasi Khas untuk Kakitangan Kerajaan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --primary: #003366;
+      --secondary: #1a5f23;
+      --accent: #ffc107;
+      --light: #f5f7fa;
+      --dark: #333;
+      --white: #ffffff;
+      --gradient-start: #003366;
+      --gradient-end: #1a5f23;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #f5f9fc 0%, #e6f0f5 100%);
+      color: var(--dark);
+      line-height: 1.6;
+      font-family: 'Roboto', sans-serif;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+      color: var(--white);
+      padding: 30px 20px;
+      text-align: center;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+      margin: 20px 0;
+      animation: fadeInDown 1s ease-out;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+      transform: rotate(30deg);
+      z-index: 1;
+    }
+    
+    .header-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      animation: bounceIn 1s ease-out;
+    }
+    
+    .logo {
+      width: 220px;
+      height: 120px;
+      background: var(--white);
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .logo:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+    }
+    
+    .logo img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 8px;
+    }
+    
+    .logo-text {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--secondary);
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .logo-subtext {
+      font-size: 17px;
+      color: #2e8b57;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    
+    header h1 {
+      font-size: 36px;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      font-family: 'Poppins', sans-serif;
+      animation: slideIn 1s ease-out;
+    }
+    
+    header p {
+      font-size: 20px;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.9;
+      font-weight: 300;
+      animation: slideIn 1.2s ease-out;
+    }
+    
+    .registration {
+      background: var(--white);
+      padding: 10px 25px;
+      border-radius: 30px;
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 16px;
+      color: var(--secondary);
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      animation: fadeInUp 1.4s ease-out;
+      transition: all 0.3s ease;
+    }
+    
+    .registration:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Section Styles */
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Two equal columns */
+      gap: 25px;
+      margin: 30px 0;
+      max-width: 1500px;
+    }
+    
+    section {
+      background: var(--white);
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: fadeInUp 1s ease-out;
+    }
+    
+    section:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+    }
+    
+    section h2 {
+      color: var(--secondary);
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #e0f0e5;
+      font-size: 28px;
+      font-family: 'Poppins', sans-serif;
+      position: relative;
+    }
+    
+    section h2::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 70px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+    
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    ul li {
+      padding: 15px 0;
+      padding-left: 45px;
+      position: relative;
+      border-bottom: 1px solid #f0f5f1;
+      font-size: 17px;
+      transition: all 0.3s ease;
+    }
+    
+    ul li:hover {
+      background: rgba(232, 245, 233, 0.3);
+      border-radius: 8px;
+      padding-left: 50px;
+    }
+    
+    ul li:last-child {
+      border-bottom: none;
+    }
+    
+    ul li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: var(--secondary);
+      font-size: 20px;
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 32px;
+      height: 32px;
+      background: #e8f5e9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    ul li:hover::before {
+      background: var(--secondary);
+      color: white;
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    /* CTA Button */
+    .cta {
+      display: block;
+      background: linear-gradient(135deg, var(--accent) 0%, #ffab00 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 20px;
+      margin: 30px 0 20px;
+      transition: all 0.4s ease;
+      box-shadow: 0 6px 15px rgba(255, 193, 7, 0.4);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      border: none;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+    }
+    
+    .cta:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(255, 193, 7, 0.6);
+    }
+    
+    .cta::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #ffab00 0%, var(--accent) 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+    
+    .cta:hover::before {
+      opacity: 1;
+    }
+    
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 25px;
+    }
+    
+    .contact-item {
+      background: linear-gradient(135deg, #f0faf3 0%, #e0f5e7 100%);
+      padding: 15px 20px;
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e0f0e5;
+    }
+    
+    .contact-item:hover {
+      transform: translateY(-10px);
+      background: linear-gradient(135deg, #e0f5e7 0%, #d0f0db 100%);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+.contact-item h3 {
+  color: var(--secondary);
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 600;
+  display: flex;              /* make icon and text align side by side */
+  align-items: center;        /* vertically center them */
+  justify-content: center;    /* center horizontally */
+  gap: 8px;                   /* space between icon and text */
+}
+
+.contact-item h3 i {
+  font-size: 22px; /* adjust icon size to match text */
+}
+    
+    .contact-item p {
+      font-size: 19px;
+      font-weight: 500;
+      color: #333;
+    }
+    
+    .icon {
+      font-size: 22px;
+      color: var(--secondary);
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-item:hover .icon {
+      transform: scale(1.15);
+      color: var(--gradient-end);
+    }
+    
+    .contact-item a {
+      text-decoration: none !important;
+      color: inherit;
+      display: block;
+      height: 100%;
+    }
+    
+    /* Disclaimer Section */
+    .disclaimer {
+      background: linear-gradient(135deg, #fff8e1 0%, #fff3c4 100%);
+      padding: 30px;
+      border-radius: 12px;
+      border-left: 5px solid var(--accent);
+      margin: 30px 0;
+      font-weight: 500;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      animation: fadeIn 1.5s ease-out;
+    }
+    
+    .disclaimer h2 {
+      color: #d35400;
+      margin-bottom: 15px;
+      font-size: 24px;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .disclaimer h2 i {
+      color: #d35400;
+    }
+    
+    .disclaimer p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #7d6608;
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 15px;
+      color: #666;
+      padding: 30px;
+      background: var(--white);
+      border-radius: 15px;
+      margin-top: 30px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      animation: fadeIn 1.8s ease-out;
+    }
+    
+    /* Animation Keyframes */
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideIn {
+      0% {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      70% {
+        transform: scale(1.1);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.5);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(255, 193, 7, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+      
+      header h1 {
+        font-size: 28px;
+      }
+      
+      header p {
+        font-size: 18px;
+      }
+      
+      section {
+        padding: 25px;
+      }
+      
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .logo {
+        width: 180px;
+        height: 100px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 24px;
+      }
+      
+      header p {
+        font-size: 16px;
+      }
+      
+      section h2 {
+        font-size: 24px;
+      }
+      
+      ul li {
+        font-size: 16px;
+        padding-left: 40px;
+      }
+      
+      .cta {
+        font-size: 18px;
+        padding: 16px;
+      }
+    }
+    
+    /* Visual Elements */
+    .finance-img {
+      width: 100%;
+      height: 250px;
+      background: linear-gradient(135deg, #e0f0ff 0%, #c2e0ff 100%);
+      border-radius: 12px;
+      margin: 30px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .finance-img::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%);
+      animation: rotate 20s linear infinite;
+    }
+    
+.img-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: left;
+}
+
+.img-content img {
+  max-width: 180px;
+  flex-shrink: 0;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 768px) {
+  .img-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .img-content img {
+    margin-bottom: 15px;
+  }
+}
+    
+    .img-content i {
+      font-size: 80px;
+      margin-bottom: 20px;
+      color: var(--secondary);
+    }
+    
+    .img-content h3 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .img-content p {
+      font-size: 18px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+<div class="img-content">
+  <img src="logo.png" alt="Koperasi4u Logo">
+  <div>
+    <h3>Pinjaman Terbaik untuk Kakitangan Kerajaan</h3>
+    <p>Dapatkan pembiayaan fleksibel dengan kadar faedah kompetitif dan proses kelulusan pantas</p>
+  </div>
+</div>
+
+<header>
+  <img src="main.png" alt="Koperasi4u Banner" style="width:100%; border-radius:15px;">
+</header>
+
+    <div class="grid-container">
+      <section>
+        <h2><i class="fas fa-star"></i> Faedah Pinjaman</h2>
+        <ul>
+          <li>Kadar tetap dari 2.69%</li>
+          <li>Proses mudah & dokumen ringkas</li>
+          <li>Tanpa penjamin & tanpa cagaran</li>
+          <li>Layak walaupun ada CCRIS / CTOS</li>
+          <li>Kelulusan secepat 2 hari bekerja</li>
+          <li>Potongan gaji melalui ANGKASA/BPA</li>
+        </ul>
+      </section>
+      
+      <section>
+        <h2><i class="fas fa-check-circle"></i> Kelayakan Permohonan</h2>
+        <ul>
+          <li>Kakitangan kerajaan tetap (guru, jururawat, kakitangan awam, dll.)</li>
+          <li>Gaji pokok minimum RM1,500</li>
+          <li>Umur 20 – 58 tahun</li>
+          <li>Tempoh perkhidmatan sekurang-kurangnya 6 bulan</li>
+        <a class="cta" href="https://www.sumbaseresources.com/mohon.html">
+          <i class="fas fa-arrow-right"></i> Mohon Sekarang
+        </a>
+        </ul>
+      </section>
+    </div>
+    
+    <section>
+      <h2><i class="fas fa-phone-alt"></i> Hubungi Kami</h2>
+      <div class="contact-grid">
+<div class="contact-item whatsapp">
+  <a href="https://wa.me/601126103357?text=Saya%20berminat%20untuk%20mohon%20pinjaman%20koperasi" target="_blank">
+    <h3><i class="fab fa-whatsapp"></i> WhatsApp</h3>
+    <p>011-26103357</p>
+  </a>
+</div>
+<div class="contact-item">
+  <a href="mailto:contact@sumbaseresources.com">
+    <h3><i class="far fa-envelope"></i> Emel</h3>
+    <p>contact@sumbaseresources.com</p>
+  </a>
+</div>
+      </div>
+    </section>
+    
+    <footer>
+      <p>@2021-2025 MUHIBBAH ALLIANCE CAPITAL SDN, BHD. 202101031832 (1432132-H)</p>
+<p>Alamat: 58-1, Jalan Tasik Utama 7, Medan Niaga Tasik Damai, Sungai Besi, 57000 Kuala Lumpur, Malaysia</p>
+    </footer>
+  </div>
+
+  <script>
+    // Add scroll animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('section');
+      
+      // Initial animation
+      setTimeout(() => {
+        sections.forEach((section, index) => {
+          setTimeout(() => {
+            section.style.opacity = '1';
+            section.style.transform = 'translateY(0)';
+          }, 300 * index);
+        });
+      }, 500);
+      
+      // Scroll animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(40px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(section);
+      });
+    });
+  </script>
+<script>
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  };
+</script>
+
+</body>
+</html>

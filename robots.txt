@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://sumbaseresources.com/sitemap.xml
